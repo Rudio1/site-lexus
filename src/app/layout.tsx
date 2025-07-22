@@ -1,6 +1,8 @@
 import './styles/globals.scss';
 import HeaderDesktop from './components/Header/index';
 import FooterDesktop from './components/Footer/index';
+import DevTools from './components/UI/DevTools';
+import { SiteProvider } from './context/SiteContext';
 import { getSiteConfig } from '@/lib/siteConfig';
 
 export async function generateMetadata() {
@@ -37,9 +39,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/lexus-lg.svg" />
       </head>
       <body>
-        <HeaderDesktop />
-        <main className="layout-main">{children}</main>
-        <FooterDesktop />
+        <SiteProvider>
+          <HeaderDesktop />
+          <main className="layout-main">{children}</main>
+          <FooterDesktop />
+          <DevTools />
+        </SiteProvider>
       </body>
     </html>
   );

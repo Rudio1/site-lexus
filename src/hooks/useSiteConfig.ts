@@ -11,7 +11,7 @@ export const useSiteConfig = () => {
   useEffect(() => {
     setIsClient(true);
     
-    const hostname = window.location.hostname;
+    const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
     
     // Mapeamento de domínios para id_sub_brand
     const domainMapping: { [key: string]: { id_sub_brand: number; siteName: string } } = {

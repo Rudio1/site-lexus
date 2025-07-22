@@ -1,9 +1,9 @@
 import { usePathname } from 'next/navigation';
-import { useSiteConfig } from './useSiteConfig';
+import { useSiteContext } from '@/app/context/SiteContext';
 
 export const useBannerFilter = () => {
   const pathname = usePathname();
-  const { id_sub_brand } = useSiteConfig();
+  const { id_sub_brand } = useSiteContext();
   
   const filterBannersByPage = (
     bannerImages: string[] = [],

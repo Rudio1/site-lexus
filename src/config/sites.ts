@@ -24,6 +24,18 @@ export const sites: Record<string, SiteConfig> = {
       whatsapp: '27999999999'
     }
   },
+  'site-lexus.vercel.app': {
+    name: 'Lexus Vitória',
+    logo: '/image/logo_vitoria_branco.svg',
+    address: 'Endereço Vitória',
+    phone: '(27) 3333-3333',
+    email: 'contato@lexusvitoria.com.br',
+    socialMedia: {
+      instagram: '@lexusvitoria',
+      facebook: 'lexusvitoria',
+      whatsapp: '27999999999'
+    }
+  },
   'lexusbh.com.br': {
     name: 'Lexus Belo Horizonte',
     logo: '/image/logo_bh.png',

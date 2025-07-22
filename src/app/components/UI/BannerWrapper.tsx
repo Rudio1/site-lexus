@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import BannerSection from "./BannerSection";
 import { useBannerFilter } from "@/app/hooks/useBannerFilter";
-import { useSiteConfig } from "@/app/hooks/useSiteConfig";
+import { useSiteContext } from "@/app/context/SiteContext";
 
 interface BannerWrapperProps {
   bannerImages?: string[];
@@ -23,10 +23,11 @@ const BannerWrapper: React.FC<BannerWrapperProps> = ({
   idSubBrands,
 }) => {
   const { filterBannersByPage } = useBannerFilter();
-  const { id_sub_brand, siteName } = useSiteConfig();
+  const { id_sub_brand, siteName } = useSiteContext();
   const [isSiteDetected, setIsSiteDetected] = useState(false);
 
   useEffect(() => {
+    console.log('BannerWrapper - id_sub_brand mudou:', id_sub_brand, 'siteName:', siteName);
     if (id_sub_brand !== null) {
       setIsSiteDetected(true);
     }
