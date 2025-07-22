@@ -1,4 +1,4 @@
-import { getSiteConfig } from '@/hooks/useSiteConfig';
+import { getSiteConfig } from '@/lib/siteConfig';
 import HeaderClient from './HeaderClient';
 
 export default async function Header() {

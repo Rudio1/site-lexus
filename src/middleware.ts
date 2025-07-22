@@ -1,37 +1,36 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { sites } from './config/sites';
 
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   
-  if (process.env.NODE_ENV === 'development') {
-    const siteConfig = sites[hostname] || sites['lexusvitoria.com.br'];
-    
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-site-config', JSON.stringify(siteConfig));
+  // Mapeamento de domínios para id_sub_brand
+  const domainMapping: { [key: string]: { id_sub_brand: number; siteName: string } } = {
+    'lexusvitoria.com.br': { id_sub_brand: 9, siteName: 'Lexus Vitória' },
+    'lexusbh.com.br': { id_sub_brand: 10, siteName: 'Lexus BH' },
+    'lexusbrasilia.com.br': { id_sub_brand: 11, siteName: 'Lexus Brasília' },
+    // Para desenvolvimento local
+    'localhost:3000': { id_sub_brand: 9, siteName: 'Lexus Vitória (Dev)' },
+    '127.0.0.1:3000': { id_sub_brand: 9, siteName: 'Lexus Vitória (Dev)' }
+  };
 
-    return NextResponse.next({
-      request: {
-        headers: requestHeaders,
-      },
-    });
+  const config = domainMapping[hostname];
+  const siteConfig = sites[hostname] || sites['lexusvitoria.com.br']; // fallback
+  
+  const response = NextResponse.next();
+  
+  // Adiciona headers com informações do site
+  if (config) {
+    response.headers.set('x-site-sub-brand', config.id_sub_brand.toString());
+    response.headers.set('x-site-name', config.siteName);
+    response.headers.set('x-site-hostname', hostname);
+    response.headers.set('x-site-config', JSON.stringify(siteConfig));
+    // Headers para ajudar na detecção do domínio real
+    response.headers.set('x-original-host', hostname);
+    response.headers.set('x-detected-domain', hostname);
   }
   
-  const siteConfig = sites[hostname];
-  
-  if (!siteConfig) {
-    return NextResponse.redirect(new URL('https://lexusvitoria.com.br', request.url));
-  }
-
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-site-config', JSON.stringify(siteConfig));
-
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+  return response;
 }
 
 export const config = {

@@ -3,12 +3,13 @@ import { fetchBanners } from "@/app/lib/getData";
 import BannerWrapper from "@/app/components/UI/BannerWrapper";
 import { BannerProvider } from "@/app/contexts/BannerContext";
 
-export const revalidate = 60;
+export const revalidate = 60; // Revalida a cada 60 segundos
 
 async function getBannerData() {
   try {
     const banners = await fetchBanners();
     
+    // Processar e filtrar banners conforme necessário
     const filteredBannerImages = banners.bannerImages.filter(Boolean);
     const filteredBannerImagesMobile = banners.bannerImagesMobile.filter(Boolean);
     const filteredBannerImagesTablet = banners.bannerImagesTablet.filter(Boolean);
@@ -19,6 +20,7 @@ async function getBannerData() {
       bannerImagesTablet: filteredBannerImagesTablet,
       links: banners.links,
       calls: banners.calls,
+      idSubBrands: banners.idSubBrands,
       contents: banners.contents,
       defenseTypes: banners.defenseTypes,
     };
@@ -30,13 +32,14 @@ async function getBannerData() {
       bannerImagesTablet: [],
       links: [],
       calls: [],
+      idSubBrands: [],
       contents: [],
       defenseTypes: [],
     };
   }
 }
 
-export default async function ContactDesktop() {
+export default async function Home() {
   const bannerData = await getBannerData();
 
   return (
@@ -51,12 +54,19 @@ export default async function ContactDesktop() {
           bannerImages={bannerData.bannerImages}
           bannerImagesMobile={bannerData.bannerImagesMobile}
           bannerImagesTablet={bannerData.bannerImagesTablet}
+          idSubBrands={bannerData.idSubBrands}
         />
       </BannerProvider>
       
-      <div className="contact-desktop">
-        <h2 className="title">Entre em Contato</h2>
-        <p className="subtitle">Envie um e-mail para contato@meuprojeto.com</p>
+      {/* Conteúdo adicional da página */}
+      <div className="container mx-auto px-4 py-8">
+        {/* <h1 className="text-4xl font-bold mb-6">Bem-vindo ao Lexus</h1>
+        <p className="text-lg mb-4">
+          Descubra a excelência Lexus. Carros de luxo com tecnologia avançada e design sofisticado.
+        </p>
+        <p className="text-lg">
+          Nossos banners estão sendo carregados dinamicamente da API e são responsivos para todos os dispositivos.
+        </p> */}
       </div>
     </>
   );

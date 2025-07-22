@@ -1,0 +1,34 @@
+// Container principal
+.bannerContainer {
+  position: relative;
+  width: 100%;
+}
+
+// Desktop - visível apenas em telas >= 1200px
+.desktopBanner {
+  display: none;
+  
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+// Tablet - visível apenas em telas >= 768px e < 1200px
+.tabletBanner {
+  display: none;
+  
+  @media (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+  }
+}
+
+// Mobile - visível apenas em telas < 768px
+.mobileBanner {
+  display: block;
+  margin-top: 0;
+  padding-top: 0;
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+} 

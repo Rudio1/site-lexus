@@ -54,4 +54,32 @@ h1, h2, h3, h4, h5, h6 {
 /* Alternative font class */
 .nobel-wgl {
   font-family: 'NobelWGL-Book', 'Nobel-Book', Arial, Helvetica, sans-serif;
+}
+
+/* Banner Styles */
+@import './BannerSection.module.scss';
+
+/* Layout styles */
+.layout-main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Garantir que não há espaçamento indesejado no topo */
+body > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Garantir que o banner fique logo abaixo do header */
+.bannerContainer {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Remover qualquer espaçamento do header */
+.header {
+  margin-bottom: 0;
+  padding-bottom: 0;
 } 

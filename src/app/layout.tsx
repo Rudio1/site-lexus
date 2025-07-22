@@ -1,7 +1,7 @@
 import './styles/globals.scss';
 import HeaderDesktop from './components/Header/index';
 import FooterDesktop from './components/Footer/index';
-import { getSiteConfig } from '@/hooks/useSiteConfig';
+import { getSiteConfig } from '@/lib/siteConfig';
 
 export async function generateMetadata() {
   try {

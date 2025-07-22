@@ -152,11 +152,15 @@
     overflow: hidden;
     font-size: 1rem;
     font-family: 'Nobel-Book', Arial, Helvetica, sans-serif;
+    opacity: 0;
+    visibility: hidden;
   }
   .mobileMenu.open {
     max-height: 600px;
     border-bottom: 1px solid #fff2;
     padding-bottom: 16px;
+    opacity: 1;
+    visibility: visible;
   }
   .mobileMenuItems {
     display: flex;
