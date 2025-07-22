@@ -41,6 +41,12 @@ async function getBannerData() {
 
 export default async function Home() {
   const bannerData = await getBannerData();
+  
+  console.log('Home - bannerData:', {
+    bannerImagesCount: bannerData.bannerImages.length,
+    callsCount: bannerData.calls.length,
+    idSubBrandsCount: bannerData.idSubBrands.length
+  });
 
   return (
     <>

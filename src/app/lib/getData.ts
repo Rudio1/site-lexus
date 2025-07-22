@@ -3,11 +3,16 @@ import axios from "axios";
 const baseUrl = `${
   typeof window !== "undefined"
     ? window.location.origin
-    : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+    : process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
 }/api/proxy`;
 
 export const fetchBanners = async () => {
+  console.log('fetchBanners - baseUrl:', baseUrl);
   const response = await axios.get(`${baseUrl}?endpoint=banners`);
+  console.log('fetchBanners - response status:', response.status);
+  console.log('fetchBanners - response data length:', response.data?.length || 0);
   
   const {
     ids,
@@ -65,6 +70,12 @@ export const fetchBanners = async () => {
     types,
     idSubBrands,
   };
+  
+  console.log('fetchBanners - result:', {
+    bannerImagesCount: result.bannerImages.length,
+    callsCount: result.calls.length,
+    idSubBrandsCount: result.idSubBrands.length
+  });
   
   return result;
 }; 
