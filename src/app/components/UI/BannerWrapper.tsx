@@ -27,7 +27,6 @@ const BannerWrapper: React.FC<BannerWrapperProps> = ({
   const [isSiteDetected, setIsSiteDetected] = useState(false);
 
   useEffect(() => {
-    console.log('BannerWrapper - id_sub_brand mudou:', id_sub_brand, 'siteName:', siteName);
     // No Vercel, sempre considerar como detectado se temos um id_sub_brand ou se estamos no domínio do Vercel
     if (id_sub_brand !== null || typeof window !== 'undefined' && window.location.hostname === 'site-lexus.vercel.app') {
       setIsSiteDetected(true);

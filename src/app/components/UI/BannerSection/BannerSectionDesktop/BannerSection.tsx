@@ -10,16 +10,11 @@ const BannerSection: React.FC<BannerSectionProps> = ({
   links,
   calls,
 }) => {
-  console.log('BannerSectionDesktop - bannerImages:', bannerImages?.length || 0);
-  
   const banners = useMemo(() => {
     return bannerImages;
   }, [bannerImages]);
 
-  if (!banners || banners.length === 0) {
-    console.log('BannerSectionDesktop - retornando null, banners vazio');
-    return null;
-  }
+  if (!banners || banners.length === 0) return null;
 
   return (
     <section style={{ width: '100%' }}>

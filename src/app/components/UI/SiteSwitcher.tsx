@@ -42,7 +42,6 @@ const SiteSwitcher: React.FC<SiteSwitcherProps> = ({ currentSite, onSiteChange }
               key={site.id}
               className={`${styles.option} ${currentSite === site.id ? styles.active : ''}`}
               onClick={() => {
-                console.log('SiteSwitcher - Mudando para site:', site.id, site.name);
                 onSiteChange(site.id);
                 setIsOpen(false);
               }}

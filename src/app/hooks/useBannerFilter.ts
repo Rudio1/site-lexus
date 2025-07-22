@@ -5,8 +5,6 @@ export const useBannerFilter = () => {
   const pathname = usePathname();
   const { id_sub_brand } = useSiteContext();
   
-  console.log('useBannerFilter - pathname:', pathname, 'id_sub_brand:', id_sub_brand);
-  
   const filterBannersByPage = (
     bannerImages: string[] = [],
     bannerImagesMobile: string[] = [],
@@ -44,16 +42,13 @@ export const useBannerFilter = () => {
         filteredIndices.push(index);
       }
     });
-    const result = {
+    return {
       bannerImages: filteredIndices.map(i => bannerImages[i]).filter(Boolean),
       bannerImagesMobile: filteredIndices.map(i => bannerImagesMobile[i]).filter(Boolean),
       bannerImagesTablet: filteredIndices.map(i => bannerImagesTablet[i]).filter(Boolean),
       links: filteredIndices.map(i => links[i]).filter(Boolean),
       calls: filteredIndices.map(i => calls[i]).filter(Boolean)
     };
-    
-    console.log('useBannerFilter - resultado:', result);
-    return result;
   };
 
   return { filterBannersByPage, currentPath: pathname };

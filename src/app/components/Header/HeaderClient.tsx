@@ -20,13 +20,6 @@ export default function HeaderClient() {
   const currentDomain = domainMapping[id_sub_brand || 9] || 'lexusvitoria.com.br';
   const siteConfig = sites[currentDomain] || sites['lexusvitoria.com.br'];
   
-  console.log('HeaderClient - id_sub_brand:', id_sub_brand, 'currentDomain:', currentDomain, 'logo:', siteConfig.logo);
-  
-  // Força re-renderização quando id_sub_brand muda
-  useEffect(() => {
-    console.log('HeaderClient - useEffect - id_sub_brand mudou para:', id_sub_brand);
-  }, [id_sub_brand]);
-  
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   return (

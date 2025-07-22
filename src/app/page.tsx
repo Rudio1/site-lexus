@@ -1,9 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { fetchBanners } from "@/app/lib/getData";
 import BannerWrapper from "@/app/components/UI/BannerWrapper";
 import { BannerProvider } from "@/app/contexts/BannerContext";
+import { useSiteContext } from "@/app/context/SiteContext";
 
-export const revalidate = 60; // Revalida a cada 60 segundos
+interface BannerData {
+  bannerImages: string[];
+  bannerImagesMobile: string[];
+  bannerImagesTablet: string[];
+  links: string[];
+  calls: string[];
+  idSubBrands: number[];
+  contents: string[];
+  defenseTypes: string[];
+}
 
 async function getBannerData() {
   try {
@@ -39,17 +51,56 @@ async function getBannerData() {
   }
 }
 
-export default async function Home() {
-  const bannerData = await getBannerData();
-  
-  console.log('Home - bannerData:', {
-    bannerImagesCount: bannerData.bannerImages.length,
-    callsCount: bannerData.calls.length,
-    idSubBrandsCount: bannerData.idSubBrands.length
+export default function Home() {
+  const { id_sub_brand } = useSiteContext();
+  const [bannerData, setBannerData] = useState<BannerData>({
+    bannerImages: [],
+    bannerImagesMobile: [],
+    bannerImagesTablet: [],
+    links: [],
+    calls: [],
+    idSubBrands: [],
+    contents: [],
+    defenseTypes: [],
   });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadBanners = async () => {
+      console.log('Home - Carregando banners para id_sub_brand:', id_sub_brand);
+      setLoading(true);
+      const data = await getBannerData();
+      setBannerData(data);
+      setLoading(false);
+      
+      console.log('Home - bannerData carregado:', {
+        bannerImagesCount: data.bannerImages.length,
+        callsCount: data.calls.length,
+        idSubBrandsCount: data.idSubBrands.length
+      });
+    };
+
+    loadBanners();
+  }, [id_sub_brand]); // Re-carrega quando id_sub_brand muda
 
   return (
     <>
+      {loading && (
+        <div style={{ 
+          position: 'fixed', 
+          top: '50%', 
+          left: '50%', 
+          transform: 'translate(-50%, -50%)',
+          background: 'rgba(0,0,0,0.8)',
+          color: 'white',
+          padding: '20px',
+          borderRadius: '10px',
+          zIndex: 9999
+        }}>
+          Carregando banners...
+        </div>
+      )}
+      
       <BannerProvider 
         contents={bannerData.contents} 
         defenseTypes={bannerData.defenseTypes}

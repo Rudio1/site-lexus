@@ -7,14 +7,6 @@ import { BannerSectionProps } from "@/app/interface/components";
 import styles from "./BannerSection.module.scss";
 
 const BannerSection: React.FC<BannerSectionProps> = (props) => {
-  console.log('BannerSection - props:', {
-    bannerImagesCount: props.bannerImages?.length || 0,
-    bannerImagesMobileCount: props.bannerImagesMobile?.length || 0,
-    bannerImagesTabletCount: props.bannerImagesTablet?.length || 0,
-    callsCount: props.calls?.length || 0,
-    linksCount: props.links?.length || 0
-  });
-  
   return (
     <div className={styles.bannerContainer}>
       {/* Desktop - visível apenas em telas >= 1200px */}
