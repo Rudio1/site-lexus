@@ -1,0 +1,201 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  max-width: 550px;
+  width: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.closeX {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 10;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.closeX:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.closeX:active {
+  transform: scale(0.95);
+}
+
+.modalTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 0;
+  padding: 24px 28px 16px 28px;
+  border-bottom: 3px solid #65676d;
+  text-align: center;
+  background: linear-gradient(135deg, #65676d 0%, #4a4a4a 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-family: 'Nobel-Regular', 'Nobel-Book', Arial, Helvetica, sans-serif;
+}
+
+.modalBody {
+  padding: 20px 28px;
+}
+
+.alertText {
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: #34495e;
+  margin: 0 0 10px 0;
+  text-align: justify;
+  font-weight: 300;
+  font-family: 'Nobel-Book', Arial, Helvetica, sans-serif;
+}
+
+.alertList {
+  margin: 14px 0;
+  padding-left: 14px;
+}
+
+.alertList li {
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: #34495e;
+  margin-bottom: 6px;
+  text-align: justify;
+  position: relative;
+  padding-left: 5px;
+  font-weight: 300;
+  font-family: 'Nobel-Book', Arial, Helvetica, sans-serif;
+}
+
+.alertList li::before {
+  content: "⚠️";
+  position: absolute;
+  left: -16px;
+  top: 0;
+  font-size: 0.65rem;
+}
+
+.alertList li:last-child {
+  margin-bottom: 0;
+}
+
+.emailLink {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-bottom: 1px solid transparent;
+  font-family: 'Nobel-Book', Arial, Helvetica, sans-serif;
+}
+
+.emailLink:hover {
+  color: #2980b9;
+  border-bottom-color: #2980b9;
+}
+
+.closeButton {
+  background: linear-gradient(135deg, #65676d 0%, #4a4a4a 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 0 28px 24px 28px;
+  display: block;
+  width: calc(100% - 56px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Nobel-Regular', 'Nobel-Book', Arial, Helvetica, sans-serif;
+}
+
+.closeButton:hover {
+  background: linear-gradient(135deg, #555 0%, #333 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.closeButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 16px;
+  }
+  
+  .modalContent {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+  
+  .closeX {
+    top: 10px;
+    right: 12px;
+    font-size: 1.6rem;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .modalTitle {
+    font-size: 1.1rem;
+    padding: 20px 24px 12px 24px;
+  }
+  
+  .modalBody {
+    padding: 16px 24px;
+  }
+  
+  .alertText {
+    font-size: 0.65rem;
+  }
+  
+  .alertList li {
+    font-size: 0.65rem;
+  }
+  
+  .closeButton {
+    margin: 0 24px 20px 24px;
+    width: calc(100% - 48px);
+    padding: 10px 24px;
+    font-size: 0.8rem;
+  }
+} 

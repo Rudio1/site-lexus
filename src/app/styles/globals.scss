@@ -1,0 +1,57 @@
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Nobel-Book';
+  src: url('/fonts/Nobel Book.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nobel-Regular';
+  src: url('/fonts/Nobel Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NobelWGL-Book';
+  src: url('/fonts/NobelWGL-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: #ffffff;
+  color: #171717;
+  font-family: 'Nobel-Book', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nobel-Regular', 'Nobel-Book', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+/* Alternative font class */
+.nobel-wgl {
+  font-family: 'NobelWGL-Book', 'Nobel-Book', Arial, Helvetica, sans-serif;
+} 

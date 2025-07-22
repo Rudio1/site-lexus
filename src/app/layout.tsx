@@ -1,19 +1,45 @@
-import '../app/styles/globals.css';
-import Header from '../app/components/Header';
-import Footer from '../app/components/Footer';
+import './styles/globals.scss';
+import HeaderDesktop from './components/Header/index';
+import FooterDesktop from './components/Footer/index';
+import { getSiteConfig } from '@/hooks/useSiteConfig';
 
-export const metadata = {
-  title: 'Meu Projeto Next.js',
-  description: 'Um projeto Next.js estruturado com Tailwind CSS.',
-};
+export async function generateMetadata() {
+  try {
+    const siteConfig = await getSiteConfig();
+    return {
+      title: siteConfig.name,
+      description: `Descubra a excelência ${siteConfig.name}. Carros de luxo com tecnologia avançada e design sofisticado.`,
+      icons: {
+        icon: '/lexus-lg.svg',
+        shortcut: '/lexus-lg.svg',
+        apple: '/lexus-lg.svg',
+      },
+    };
+  } catch {
+    return {
+      title: 'Lexus - Luxo e Performance',
+      description: 'Descubra a excelência Lexus. Carros de luxo com tecnologia avançada e design sofisticado.',
+      icons: {
+        icon: '/lexus-lg.svg',
+        shortcut: '/lexus-lg.svg',
+        apple: '/lexus-lg.svg',
+      },
+    };
+  }
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+      <head>
+        <link rel="icon" href="/lexus-lg.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/lexus-lg.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/lexus-lg.svg" />
+      </head>
+      <body>
+        <HeaderDesktop />
+        <main className="layout-main">{children}</main>
+        <FooterDesktop />
       </body>
     </html>
   );

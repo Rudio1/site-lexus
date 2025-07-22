@@ -14,7 +14,7 @@ export type SiteConfig = {
 export const sites: Record<string, SiteConfig> = {
   'lexusvitoria.com.br': {
     name: 'Lexus Vitória',
-    logo: 'https://lexusvitoria.com.br/assets/icons/lexus-vitoria-logo.webp',
+    logo: '/image/logo_vitoria_branco.svg',
     address: 'Endereço Vitória',
     phone: '(27) 3333-3333',
     email: 'contato@lexusvitoria.com.br',
@@ -26,7 +26,7 @@ export const sites: Record<string, SiteConfig> = {
   },
   'lexusbh.com.br': {
     name: 'Lexus Belo Horizonte',
-    logo: '/images/logo-bh.png',
+    logo: '/image/logo_bh.png',
     address: 'Endereço Belo Horizonte',
     phone: '(31) 3333-3333',
     email: 'contato@lexusbh.com.br',
@@ -38,7 +38,7 @@ export const sites: Record<string, SiteConfig> = {
   },
   'lexusbrasilia.com.br': {
     name: 'Lexus Brasília',
-    logo: '/images/logo-brasilia.png',
+    logo: '/image/logo_brasilia.png',
     address: 'Endereço Brasília',
     phone: '(61) 3333-3333',
     email: 'contato@lexusbrasilia.com.br',

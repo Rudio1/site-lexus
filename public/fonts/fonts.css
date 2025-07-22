@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Nobel-Book';
+    src: url('./nobel/Nobel Book.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nobel-Regular';
+    src: url('./nobel/Nobel Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --typography-fontFamily-text: 'Nobel-Book';
+    --typography-fontFamily-heading: 'Nobel-Regular';
+    --typography-fontSize-body-small: 14px;
+    --typography-fontSize-body-large: 16px;
+    --typography-fontSize-body-xlarge: 20px;
+    --typography-fontSize-heading-h3: 24px;
+    --typography-fontSize-heading-h2: 32px;
+    --typography-fontSize-heading-h1: 36px;
+} 
