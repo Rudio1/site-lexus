@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import AlertModal from './AlertModal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSiteContext } from '@/app/context/SiteContext';
 import { sites } from '@/config/sites';
 
