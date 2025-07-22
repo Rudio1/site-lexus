@@ -1,12 +1,32 @@
 "use client";
-import { SiteConfig } from '@/config/sites';
 import styles from './Header.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import AlertModal from './AlertModal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSiteContext } from '@/app/context/SiteContext';
+import { sites } from '@/config/sites';
 
-export default function HeaderClient({ siteConfig }: { siteConfig: SiteConfig }) {
+export default function HeaderClient() {
+  const { id_sub_brand } = useSiteContext();
+  
+  // Mapear id_sub_brand para o domínio correto para pegar a configuração
+  const domainMapping: { [key: number]: string } = {
+    9: 'lexusvitoria.com.br',
+    10: 'lexusbh.com.br',
+    11: 'lexusbrasilia.com.br'
+  };
+  
+  const currentDomain = domainMapping[id_sub_brand || 9] || 'lexusvitoria.com.br';
+  const siteConfig = sites[currentDomain] || sites['lexusvitoria.com.br'];
+  
+  console.log('HeaderClient - id_sub_brand:', id_sub_brand, 'currentDomain:', currentDomain, 'logo:', siteConfig.logo);
+  
+  // Força re-renderização quando id_sub_brand muda
+  useEffect(() => {
+    console.log('HeaderClient - useEffect - id_sub_brand mudou para:', id_sub_brand);
+  }, [id_sub_brand]);
+  
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   return (
@@ -18,7 +38,13 @@ export default function HeaderClient({ siteConfig }: { siteConfig: SiteConfig })
       </div>
       <div className={styles.headerMain}>
         <Link href="/" className={styles.logoLink}>
-          <Image src={siteConfig.logo} alt={siteConfig.name} width={100} height={40} />
+          <Image 
+            key={`${id_sub_brand}-${siteConfig.logo}`}
+            src={siteConfig.logo} 
+            alt={siteConfig.name} 
+            width={100} 
+            height={40} 
+          />
         </Link>
         {/* Desktop nav */}
         <div className={styles.carNames}>

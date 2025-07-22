@@ -85,7 +85,7 @@ export const SiteProvider: React.FC<SiteProviderProps> = ({ children }) => {
   }, [manualSiteId]);
 
   const changeSite = (siteId: number) => {
-    console.log('Mudando site para:', siteId);
+    console.log('SiteContext - Mudando site para:', siteId);
     setManualSiteId(siteId);
     
     // Força atualização imediata
@@ -95,11 +95,15 @@ export const SiteProvider: React.FC<SiteProviderProps> = ({ children }) => {
       11: 'Lexus Brasília'
     };
     
-    setSiteConfig(prev => ({
-      ...prev,
-      id_sub_brand: siteId,
-      siteName: domainMapping[siteId] || 'Lexus Vitória'
-    }));
+    setSiteConfig(prev => {
+      const newConfig = {
+        ...prev,
+        id_sub_brand: siteId,
+        siteName: domainMapping[siteId] || 'Lexus Vitória'
+      };
+      console.log('SiteContext - Nova configuração:', newConfig);
+      return newConfig;
+    });
   };
 
   const value: SiteContextType = {
@@ -109,6 +113,8 @@ export const SiteProvider: React.FC<SiteProviderProps> = ({ children }) => {
     changeSite,
     isClient
   };
+
+  console.log('SiteContext - valor atual:', value);
 
   return (
     <SiteContext.Provider value={value}>
