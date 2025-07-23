@@ -1,6 +1,6 @@
 import './styles/globals.scss';
 import HeaderDesktop from './components/Header/index';
-import FooterDesktop from './components/Footer/index';
+import Footer from './components/Footer/index';
 import DevTools from './components/UI/DevTools';
 import { SiteProvider } from './context/SiteContext';
 import { getSiteConfig } from '@/lib/siteConfig';
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteProvider>
           <HeaderDesktop />
           <main className="layout-main">{children}</main>
-          <FooterDesktop />
+          <Footer />
           <DevTools />
         </SiteProvider>
       </body>

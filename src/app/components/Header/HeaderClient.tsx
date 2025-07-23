@@ -10,7 +10,6 @@ import { sites } from '@/config/sites';
 export default function HeaderClient() {
   const { id_sub_brand } = useSiteContext();
   
-  // Mapear id_sub_brand para o domínio correto para pegar a configuração
   const domainMapping: { [key: number]: string } = {
     9: 'lexusvitoria.com.br',
     10: 'lexusbh.com.br',
@@ -39,7 +38,6 @@ export default function HeaderClient() {
             height={40} 
           />
         </Link>
-        {/* Desktop nav */}
         <div className={styles.carNames}>
           <span>UX <b>SUV</b></span>
           <span>NX <b>SUV</b></span>
@@ -47,7 +45,6 @@ export default function HeaderClient() {
           <span>ES <b>SEDAN</b></span>
         </div>
         <button className={styles.consultorBtn}>FALAR COM O CONSULTOR</button>
-        {/* Mobile hamburger/X */}
         <button
           className={styles.hamburger}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -64,14 +61,11 @@ export default function HeaderClient() {
           )}
         </button>
       </div>
-      {/* Mobile menu overlay */}
       {menuOpen && (
         <div className={styles.mobileMenuOverlay} onClick={() => setMenuOpen(false)} />
       )}
-      {/* Mobile menu */}
       <nav className={styles.mobileMenu + (menuOpen ? ' ' + styles.open : '')}>
         <div className={styles.mobileMenuItems}>
-          {/* Vehicle Models Section */}
           <div className={styles.menuSection}>
             <span>UX <b>SUV COMPACTO</b></span>
             <span>NX <b>SUV MÉDIO</b></span>
@@ -79,18 +73,14 @@ export default function HeaderClient() {
             <span>ES <b>SEDAN</b></span>
           </div>
           
-          {/* Divider */}
           <div className={styles.menuDivider}></div>
           
-          {/* Call to Action Section */}
           <div className={styles.menuSection}>
             <button className={styles.consultorBtn}>FALAR COM O CONSULTOR</button>
           </div>
           
-          {/* Divider */}
           <div className={styles.menuDivider}></div>
           
-          {/* Social Media and Legal Section */}
           <div className={styles.menuSection}>
             <div className={styles.socialIcons}>
               <a href="#" className={styles.socialIcon}>

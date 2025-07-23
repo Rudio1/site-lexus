@@ -1,6 +1,7 @@
 export type SiteConfig = {
   name: string;
   logo: string;
+  logo_footer: string;
   address: string;
   phone: string;
   email: string;
@@ -15,6 +16,7 @@ export const sites: Record<string, SiteConfig> = {
   'lexusvitoria.com.br': {
     name: 'Lexus Vitória',
     logo: '/image/logo_vitoria_branco.svg',
+    logo_footer: '/image/logo_vitoria.png',
     address: 'Endereço Vitória',
     phone: '(27) 3333-3333',
     email: 'contato@lexusvitoria.com.br',
@@ -27,6 +29,7 @@ export const sites: Record<string, SiteConfig> = {
   'site-lexus.vercel.app': {
     name: 'Lexus Vitória',
     logo: '/image/logo_vitoria_branco.svg',
+    logo_footer: '/image/logo_vitoria.png',
     address: 'Endereço Vitória',
     phone: '(27) 3333-3333',
     email: 'contato@lexusvitoria.com.br',
@@ -38,7 +41,8 @@ export const sites: Record<string, SiteConfig> = {
   },
   'lexusbh.com.br': {
     name: 'Lexus Belo Horizonte',
-    logo: '/image/logo_bh.png',
+    logo: '/image/logo_bh_branco.svg',
+    logo_footer: '/image/logo_bh.png',
     address: 'Endereço Belo Horizonte',
     phone: '(31) 3333-3333',
     email: 'contato@lexusbh.com.br',
@@ -50,7 +54,8 @@ export const sites: Record<string, SiteConfig> = {
   },
   'lexusbrasilia.com.br': {
     name: 'Lexus Brasília',
-    logo: '/image/logo_brasilia.png',
+    logo: '/image/logo_brasilia_branco.svg',
+    logo_footer: '/image/logo_brasilia.png',
     address: 'Endereço Brasília',
     phone: '(61) 3333-3333',
     email: 'contato@lexusbrasilia.com.br',

@@ -31,12 +31,9 @@ export const useBannerFilter = () => {
       const callPages = call.split(',').map(page => page.trim());
       const bannerSubBrand = idSubBrands[index];
 
-      // Se temos um id_sub_brand específico e o banner tem um sub_brand diferente, pular
       if (id_sub_brand && bannerSubBrand && bannerSubBrand !== id_sub_brand) {
         return;
       }
-      // Se não temos id_sub_brand (null/undefined), mostrar todos os banners
-      // Removido o return aqui para permitir banners sem sub_brand específico
     
       if (callPages.includes(pathname)) {
         filteredIndices.push(index);
